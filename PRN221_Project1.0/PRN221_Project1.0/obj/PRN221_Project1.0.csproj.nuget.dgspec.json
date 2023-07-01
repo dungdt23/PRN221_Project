@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\FPT\\SUM23\\PRN221\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj": {}
+    "C:\\FPT\\SUM23\\PRN221\\PRN221_Project\\PRN221_Project\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj": {}
   },
   "projects": {
-    "C:\\FPT\\SUM23\\PRN221\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj": {
+    "C:\\FPT\\SUM23\\PRN221\\PRN221_Project\\PRN221_Project\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FPT\\SUM23\\PRN221\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj",
+        "projectUniqueName": "C:\\FPT\\SUM23\\PRN221\\PRN221_Project\\PRN221_Project\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj",
         "projectName": "PRN221_Project1.0",
-        "projectPath": "C:\\FPT\\SUM23\\PRN221\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj",
+        "projectPath": "C:\\FPT\\SUM23\\PRN221\\PRN221_Project\\PRN221_Project\\PRN221_Project1.0\\PRN221_Project1.0\\PRN221_Project1.0.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\FPT\\SUM23\\PRN221\\PRN221_Project1.0\\PRN221_Project1.0\\obj\\",
+        "outputPath": "C:\\FPT\\SUM23\\PRN221\\PRN221_Project\\PRN221_Project\\PRN221_Project1.0\\PRN221_Project1.0\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,34 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
