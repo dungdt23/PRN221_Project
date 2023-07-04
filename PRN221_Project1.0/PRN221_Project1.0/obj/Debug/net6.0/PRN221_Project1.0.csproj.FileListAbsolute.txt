@@ -25,9 +25,9 @@ C:\FPT\SUM23\PRN221\PRN221_Project1.0\PRN221_Project1.0\obj\Debug\net6.0\PRN221_
 C:\FPT\SUM23\PRN221\PRN221_Project1.0\PRN221_Project1.0\obj\Debug\net6.0\PRN221_Project1.0.genruntimeconfig.cache
 C:\FPT\SUM23\PRN221\PRN221_Project1.0\PRN221_Project1.0\obj\Debug\net6.0\ref\PRN221_Project1.0.dll
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\appsettings.Development.json
-C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\appsettings.json
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\PRN221_Project1.0.staticwebassets.runtime.json
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\PRN221_Project1.0.exe
+C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\appsettings.json
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\PRN221_Project1.0.deps.json
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\PRN221_Project1.0.runtimeconfig.json
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\PRN221_Project1.0.dll
@@ -67,6 +67,7 @@ C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Proje
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\System.CodeDom.dll
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\System.Drawing.Common.dll
@@ -110,4 +111,3 @@ C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Proje
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\obj\Debug\net6.0\PRN221_Project1.0.pdb
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\obj\Debug\net6.0\PRN221_Project1.0.genruntimeconfig.cache
 C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\obj\Debug\net6.0\ref\PRN221_Project1.0.dll
-C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0\bin\Debug\net6.0\Newtonsoft.Json.dll

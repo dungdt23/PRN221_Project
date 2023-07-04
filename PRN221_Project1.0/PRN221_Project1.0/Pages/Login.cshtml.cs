@@ -29,7 +29,7 @@ namespace PRN221_Project1._0.Pages
                 string json = JsonConvert.SerializeObject(lecture);
                 HttpContext.Session.SetString("lecture", json);
                 msg = "login success";
-                return Page();
+                return RedirectToPage("Timetable");
             }
             else
             {

@@ -6,160 +6,163 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="~/css/timetable.css" asp-append-version="true" />
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="schedule-table ">
-                    <table class="table bg-white" id="timetable">
-                        <thead>
-                            <label for="year-select">Year:</label>
-                            <select id="year-select"></select>
-                            <label for="week-select">Week:</label>
-                            <select id="week-select"></select>
+    <form method="get" asp-page="Timetable" id="form-select-week">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="schedule-table ">
+                        <table class="table bg-white" id="timetable">
+                            <thead>
+                                <label for="year-select">Year:</label>
+                                <select id="year-select" name="year">
+                                </select>
+                                <label for="week-select">Week:</label>
+                                <select id="week-select" name="week"></select>
 
-                            <tr>
-                                <th></th>
-                                <th >Monday</th>
-                                <th >Tuesday</th>
-                                <th >Wednesday</th>
-                                <th >Thursday</th>
-                                <th >Friday</th>
-                                <th >Saturday</th>
-                                <th >Sunday</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="day">
-                                    Slot 1
-                                </td>
-                                <td class="active ">
-                                </td>
-                                <td class="active ">
-                                </td>
-                                <td class="active ">
-                                </td>
-                                <td class="active ">
-                                </td>
-                                <td class="active ">
-                                </td>
-                                <td class="active ">
-                                </td>
-                                <td class="active ">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="day">Slot 2</td>
-                                <td></td>
-                                <td class="active thursday">
-                                    <h4>Cycling</h4>
-                                    <p>11 am - 12 pm</p>
-                                    <div class="hover">
+                                <tr>
+                                    <th></th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                    <th>Sunday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="day">
+                                        Slot 1
+                                    </td>
+                                    <td class="active ">
+                                    </td>
+                                    <td class="active ">
+                                    </td>
+                                    <td class="active ">
+                                    </td>
+                                    <td class="active ">
+                                    </td>
+                                    <td class="active ">
+                                    </td>
+                                    <td class="active ">
+                                    </td>
+                                    <td class="active ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="day">Slot 2</td>
+                                    <td></td>
+                                    <td class="active thursday">
                                         <h4>Cycling</h4>
                                         <p>11 am - 12 pm</p>
-                                        <span>Tabitha Potter</span>
-                                    </div>
-                                </td>
-                                <td class="active friday">
-                                    <h4>Karate</h4>
-                                    <p>03 pm - 05 pm</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Cycling</h4>
+                                            <p>11 am - 12 pm</p>
+                                            <span>Tabitha Potter</span>
+                                        </div>
+                                    </td>
+                                    <td class="active friday">
                                         <h4>Karate</h4>
                                         <p>03 pm - 05 pm</p>
-                                        <span>Lester Gray</span>
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="active saturday">
-                                    <h4>Crossfit</h4>
-                                    <p>07 pm - 08 pm</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Karate</h4>
+                                            <p>03 pm - 05 pm</p>
+                                            <span>Lester Gray</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td class="active saturday">
                                         <h4>Crossfit</h4>
                                         <p>07 pm - 08 pm</p>
-                                        <span>Candi Yip</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="day">Slot 3</td>
-                                <td class="active">
-                                    <h4>Spinning</h4>
-                                    <p>10 am - 11 am</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Crossfit</h4>
+                                            <p>07 pm - 08 pm</p>
+                                            <span>Candi Yip</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="day">Slot 3</td>
+                                    <td class="active">
                                         <h4>Spinning</h4>
                                         <p>10 am - 11 am</p>
-                                        <span>Mary Cass</span>
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td class="active">
-                                    <h4>Bootcamp</h4>
-                                    <p>05 pm - 06 pm</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Spinning</h4>
+                                            <p>10 am - 11 am</p>
+                                            <span>Mary Cass</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="active">
                                         <h4>Bootcamp</h4>
                                         <p>05 pm - 06 pm</p>
-                                        <span>Brenda Mastropietro</span>
-                                    </div>
-                                </td>
-                                <td class="active">
-                                    <h4>Boxercise</h4>
-                                    <p>07 pm - 08 pm</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Bootcamp</h4>
+                                            <p>05 pm - 06 pm</p>
+                                            <span>Brenda Mastropietro</span>
+                                        </div>
+                                    </td>
+                                    <td class="active">
                                         <h4>Boxercise</h4>
                                         <p>07 pm - 08 pm</p>
-                                        <span>Marlene Bruce</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="day">Slot 4</td>
-                                <td class="active">
-                                    <h4>Body Building</h4>
-                                    <p>10 am - 12 pm</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Boxercise</h4>
+                                            <p>07 pm - 08 pm</p>
+                                            <span>Marlene Bruce</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="day">Slot 4</td>
+                                    <td class="active">
                                         <h4>Body Building</h4>
                                         <p>10 am - 12 pm</p>
-                                        <span>Brenda Hester</span>
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="active">
-                                    <h4>Dance</h4>
-                                    <p>03 pm - 05 pm</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Body Building</h4>
+                                            <p>10 am - 12 pm</p>
+                                            <span>Brenda Hester</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td class="active">
                                         <h4>Dance</h4>
                                         <p>03 pm - 05 pm</p>
-                                        <span>Brian Ashworth</span>
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td class="active">
-                                    <h4>Health</h4>
-                                    <p>07 pm - 08 pm</p>
-                                    <div class="hover">
+                                        <div class="hover">
+                                            <h4>Dance</h4>
+                                            <p>03 pm - 05 pm</p>
+                                            <span>Brian Ashworth</span>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td class="active">
                                         <h4>Health</h4>
                                         <p>07 pm - 08 pm</p>
-                                        <span>Mark Croteau</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                        <div class="hover">
+                                            <h4>Health</h4>
+                                            <p>07 pm - 08 pm</p>
+                                            <span>Mark Croteau</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
+    </form>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const years = [2022, 2023, 2024];
-
         // Define the day names and date format
         const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         const dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
-
+        var selectedYear = '@Model.selectedYear';
+        var selectedWeek = '@Model.selectedWeek';
         // Populate the year and week select boxes
         const yearSelect = document.getElementById('year-select');
         years.forEach(year => {
@@ -194,26 +197,55 @@
             const year = parseInt(yearSelect.value);
             const week = parseInt(weekSelect.value);
             displayDaysOfWeek(year, week);
+            const form = document.getElementById('form-select-week');
+            form.action = `/Timetable?year=${year}&week=${week}`;
+            form.submit();
         });
 
         weekSelect.addEventListener('change', () => {
             const year = parseInt(yearSelect.value);
             const week = parseInt(weekSelect.value);
             displayDaysOfWeek(year, week);
+            const form = document.getElementById('form-select-week');
+            form.action = `/Timetable?year=${year}&week=${week}`;
+            form.submit();
         });
-
+        //Function to update week after year selected
+        function updateWeek(year) {
+            console.log(year);
+            const weekSelect = document.getElementById('week-select');
+            weekSelect.innerHTML = '';
+            for (let i = 1; i <= 52; i++) {
+                const monday = getMondayOfWeek(year, i);
+                const sunday = new Date(monday.getTime() + 6 * 24 * 60 * 60 * 1000);
+                const option = document.createElement('option');
+                option.value = i;
+                option.text = `Week ${i} (${dateFormat.format(monday)} - ${dateFormat.format(sunday)})`;
+                weekSelect.appendChild(option);
+            }
+        }
 
         // Get the date of the first day (Monday) of the specified week and year
         function getMondayOfWeek(year, week) {
             const januaryFirst = new Date(year, 0, 1);
             const daysOffset = (januaryFirst.getDay() > 0 ? januaryFirst.getDay() - 1 : 6);
-            const firstMonday = new Date(year, 0, 1 + (7 - daysOffset));
-            const weekMonday = new Date(firstMonday.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000);
-            return weekMonday;
+            //const firstMonday = new Date(year, 0, 1 + (7 - daysOffset));
+            if (daysOffset === 0) {
+                const firstMonday1 = new Date(year, 0, 1);
+                const weekMonday1 = new Date(firstMonday1.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000);
+                return weekMonday1;
+            }
+            else {
+                const firstMonday2 = new Date(year, 0, 1 + (7 - daysOffset));
+                const weekMonday2 = new Date(firstMonday2.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000);
+                return weekMonday2;
+
+            }
         }
 
         // Populate the timetable with the schedule for the specified week and year
         function displayDaysOfWeek(year, week) {
+
             const dateFormat = new Intl.DateTimeFormat('en', { day: '2-digit', month: '2-digit' });
             const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
             const monday = getMondayOfWeek(year, week);
@@ -227,15 +259,64 @@
                 header.textContent = `${daysOfWeek[i]} ${dateFormat.format(day)}`;
             }
         }
-        function init() {
-            const currentDate = new Date();
-            const currentYear = currentDate.getFullYear();
-            const currentWeek = currentDate.getMonth();
-            displayDaysOfWeek(currentYear, currentWeek);
-            yearSelect.value = currentYear;
-            weekSelect.value = currentWeek;
+
+        function getWeekNumber(date) {
+            const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+            const daysSinceStartOfYear = Math.round((date.getTime() - firstDayOfYear.getTime()) / (24 * 60 * 60 * 1000));
+            const weekNo = Math.ceil((daysSinceStartOfYear + 1 - firstDayOfYear.getDay()) / 7);
+            return weekNo;
         }
-        init()
+        function initializeTimetable() {
+            var selectedYear = '@Model.selectedYear';
+            var selectedWeek = '@Model.selectedWeek';
+            if (selectedYear !== '' && selectedWeek !== '') {
+                // Define global variables to hold the year and week values
+                const yearSelect = document.getElementById('year-select');
+                const weekSelect = document.getElementById('week-select');
+
+                // Calculate the year and week number of the current date
+                const currentYear = selectedYear;
+                updateWeek(currentYear);
+                const firstMondayOfYear = getMondayOfWeek(currentYear, 1);
+
+                // Set the default values of the year and week selects to the current year and week
+                yearSelect.value = currentYear;
+                weekSelect.value = selectedWeek;
+                console.log(yearSelect.value + "and " + selectedWeek)
+                // Call the displayDaysOfWeek function with the current year and week
+                displayDaysOfWeek(currentYear, selectedWeek);
+
+                // Set the action attribute of the form to the current year and week
+                const form = document.getElementById('form-select-week');
+                form.action = `/Timetable?year=${currentYear}&week=${selectedWeek}`;
+            }
+            else {
+                // Define global variables to hold the year and week values
+                const yearSelect = document.getElementById('year-select');
+                const weekSelect = document.getElementById('week-select');
+                // Get the current date
+                const currentDate = new Date();
+
+                // Calculate the year and week number of the current date
+                const currentYear = currentDate.getFullYear();
+                const firstMondayOfYear = getMondayOfWeek(currentYear, 1);
+                const currentWeek = ((currentDate - firstMondayOfYear) / (7 * 86400000)) + 1;
+
+                // Set the default values of the year and week selects to the current year and week
+                yearSelect.value = currentYear;
+                weekSelect.value = parseInt(currentWeek);
+
+                // Call the displayDaysOfWeek function with the current year and week
+                displayDaysOfWeek(currentYear, currentWeek);
+
+                // Set the action attribute of the form to the current year and week
+                const form = document.getElementById('form-select-week');
+                form.action = `/Timetable?year=${currentYear}&week=${currentWeek}`;
+            }
+        }
+
+        // Call the initializeTimetable function when the page loads
+        window.addEventListener('load', initializeTimetable);
 
     </script>
 </body>
