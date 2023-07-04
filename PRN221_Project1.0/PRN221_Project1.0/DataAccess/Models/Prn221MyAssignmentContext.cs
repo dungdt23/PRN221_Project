@@ -100,10 +100,6 @@ public partial class Prn221MyAssignmentContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Course_Campus");
 
-            entity.HasOne(d => d.Group).WithMany(p => p.Courses)
-                .HasForeignKey(d => d.GroupId)
-                .HasConstraintName("FK_Course_Group");
-
             entity.HasOne(d => d.Lecture).WithMany(p => p.Courses)
                 .HasForeignKey(d => d.LectureId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -158,6 +154,11 @@ public partial class Prn221MyAssignmentContext : DbContext
             entity.Property(e => e.GroupName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Course).WithMany(p => p.Groups)
+                .HasForeignKey(d => d.CourseId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Group_Course");
         });
 
         modelBuilder.Entity<Lecture>(entity =>

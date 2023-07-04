@@ -11,7 +11,7 @@ public partial class Group
 
     public int CourseId { get; set; }
 
-    public virtual ICollection<Course> Courses { get; set; } = new List<Course>();
+    public virtual Course Course { get; set; } = null!;
 
     public virtual ICollection<Session> Sessions { get; set; } = new List<Session>();
 }

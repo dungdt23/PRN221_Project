@@ -19,13 +19,11 @@ public partial class Course
 
     public int CampusId { get; set; }
 
-    public int? GroupId { get; set; }
-
     public virtual Campus Campus { get; set; } = null!;
 
     public virtual ICollection<Enroll> Enrolls { get; set; } = new List<Enroll>();
 
-    public virtual Group? Group { get; set; }
+    public virtual ICollection<Group> Groups { get; set; } = new List<Group>();
 
     public virtual Lecture Lecture { get; set; } = null!;
 
