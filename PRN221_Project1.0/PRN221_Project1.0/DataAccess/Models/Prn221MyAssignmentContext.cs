@@ -136,10 +136,10 @@ public partial class Prn221MyAssignmentContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Course).WithMany(p => p.Enrolls)
-                .HasForeignKey(d => d.CourseId)
+            entity.HasOne(d => d.Group).WithMany(p => p.Enrolls)
+                .HasForeignKey(d => d.GroupId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Enroll_Course");
+                .HasConstraintName("FK_Enroll_Group");
 
             entity.HasOne(d => d.Student).WithMany(p => p.Enrolls)
                 .HasForeignKey(d => d.StudentId)

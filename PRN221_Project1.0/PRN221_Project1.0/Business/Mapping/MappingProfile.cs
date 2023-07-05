@@ -9,6 +9,10 @@ namespace PRN221_Project1._0.Business.Mapping
         {
             CreateMap<Lecture, LectureDTO>();
             CreateMap<LectureDTO, Lecture>();
+            CreateMap<Session, SessionDTO>();
+            CreateMap<SessionDTO, Session>();
+            CreateMap<Slot, SlotDTO>();
+            CreateMap<SlotDTO, Slot>();
         }
     }
 }

@@ -15,6 +15,8 @@ public partial class Session
 
     public int RoomId { get; set; }
 
+    public bool? IsAttended { get; set; }
+
     public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
 
     public virtual Group Group { get; set; } = null!;

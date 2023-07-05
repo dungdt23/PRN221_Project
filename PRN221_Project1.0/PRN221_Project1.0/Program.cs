@@ -14,6 +14,12 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddTransient<ILectureRepository, LectureRepository>()
     .AddDbContext<Prn221MyAssignmentContext>(opt =>
     builder.Configuration.GetConnectionString("DB"));
+builder.Services.AddTransient<ISessionRepository, SessionRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+builder.Services.AddTransient<ISlotRepository, SlotRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
 
 var app = builder.Build();
 

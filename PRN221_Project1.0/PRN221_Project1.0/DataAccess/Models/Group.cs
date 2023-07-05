@@ -13,5 +13,7 @@ public partial class Group
 
     public virtual Course Course { get; set; } = null!;
 
+    public virtual ICollection<Enroll> Enrolls { get; set; } = new List<Enroll>();
+
     public virtual ICollection<Session> Sessions { get; set; } = new List<Session>();
 }

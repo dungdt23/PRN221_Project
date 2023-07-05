@@ -9,9 +9,9 @@ public partial class Enroll
 
     public string StudentId { get; set; } = null!;
 
-    public int CourseId { get; set; }
+    public int GroupId { get; set; }
 
-    public virtual Course Course { get; set; } = null!;
+    public virtual Group Group { get; set; } = null!;
 
     public virtual Student Student { get; set; } = null!;
 }
