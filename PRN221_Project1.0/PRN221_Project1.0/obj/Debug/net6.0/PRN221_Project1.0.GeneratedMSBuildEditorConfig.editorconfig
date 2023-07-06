@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\FPT\SUM23\PRN221\PRN221_Project\PRN221_Project\PRN221_Project1.0\PRN221_Project1.0
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/FPT/SUM23/PRN221/PRN221_Project/PRN221_Project/PRN221_Project1.0/PRN221_Project1.0/Pages/Attendance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXR0ZW5kYW5jZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/FPT/SUM23/PRN221/PRN221_Project/PRN221_Project/PRN221_Project1.0/PRN221_Project1.0/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -23,5 +23,6 @@ namespace PRN221_Project1._0.DataAccess.Managers
                                  .ToList();
             return sessions;
         }
+
     }
 }

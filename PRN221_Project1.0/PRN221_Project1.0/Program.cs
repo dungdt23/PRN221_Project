@@ -11,13 +11,32 @@ builder.Services.AddSession();
 builder.Services.AddCors();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+//lecture
 builder.Services.AddTransient<ILectureRepository, LectureRepository>()
     .AddDbContext<Prn221MyAssignmentContext>(opt =>
     builder.Configuration.GetConnectionString("DB"));
+//session
 builder.Services.AddTransient<ISessionRepository, SessionRepository>()
     .AddDbContext<Prn221MyAssignmentContext>(opt =>
     builder.Configuration.GetConnectionString("DB"));
+//slot
 builder.Services.AddTransient<ISlotRepository, SlotRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//group
+builder.Services.AddTransient<IGroupRepository, GroupRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//enroll
+builder.Services.AddTransient<IEnrollRepository, EnrollRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//student
+builder.Services.AddTransient<IStudentRepository, StudentRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//attendance
+builder.Services.AddTransient<IAttendanceRepository, AttendanceRepository>()
     .AddDbContext<Prn221MyAssignmentContext>(opt =>
     builder.Configuration.GetConnectionString("DB"));
 

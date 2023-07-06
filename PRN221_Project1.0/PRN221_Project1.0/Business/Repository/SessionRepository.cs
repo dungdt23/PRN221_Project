@@ -25,5 +25,6 @@ namespace PRN221_Project1._0.Business.Repository
             sessionDTOs = _mapper.Map<List<SessionDTO>>(sessions);
             return sessionDTOs;
         }
+
     }
 }
