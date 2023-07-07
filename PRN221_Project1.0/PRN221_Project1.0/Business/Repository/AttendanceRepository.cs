@@ -25,5 +25,10 @@ namespace PRN221_Project1._0.Business.Repository
             return attendanceDTOs;
 
         }
+        public void TakeAttendance(int attendanceId, bool status)
+        {
+            manager = new AttendanceManager(_context);
+            manager.TakeAttendance(attendanceId, status);
+        }
     }
 }

@@ -25,6 +25,11 @@ namespace PRN221_Project1._0.Business.Repository
             sessionDTOs = _mapper.Map<List<SessionDTO>>(sessions);
             return sessionDTOs;
         }
+        public void TakeAttendance(int sessionId)
+        {
+            manager = new SessionManager(_context);
+            manager.TakeAttendance(sessionId);
+        }
 
     }
 }

@@ -13,14 +13,17 @@ namespace PRN221_Project1._0.Pages
         IStudentRepository _studentRepository;
         IGroupRepository _groupRepository;
         IAttendanceRepository _attendanceRepository;
+        ISessionRepository _sessionRepository;
         public List<StudentDTO> students;
-        public List<AttendanceDTO> attendances;
+        public List<AttendanceDTO> attendances { get; set; }
+
         public int? savedSessionId;
-        public AttendanceModel(IStudentRepository studentRepository, IGroupRepository groupRepository, IAttendanceRepository attendanceRepository)
+        public AttendanceModel(IStudentRepository studentRepository, IGroupRepository groupRepository, IAttendanceRepository attendanceRepository, ISessionRepository sessionRepository)
         {
             _studentRepository = studentRepository;
             _groupRepository = groupRepository;
             _attendanceRepository = attendanceRepository;
+            _sessionRepository = sessionRepository;
         }
         public void OnGet(int? sessionId)
         {
@@ -34,14 +37,24 @@ namespace PRN221_Project1._0.Pages
         }
         public IActionResult OnPost()
         {
-            attendances = _attendanceRepository.GetAttendance(savedSessionId.Value);
-            foreach (AttendanceDTO s in attendances)
+            string sessionIdStr = Request.Form["sessionId"];
+            int sessionId = Int32.Parse(sessionIdStr);
+            if (sessionId != 0)
             {
-                // The value of s.IsAbsent has already been updated based on the selected radio button
-                Console.WriteLine(s.IsAbsent);
-                // No further action is needed in the code-behind file
+                attendances = _attendanceRepository.GetAttendance(sessionId);
+                foreach (AttendanceDTO a in attendances)
+                {
+                    bool status = true;
+
+                    if (Request.Form["attendance[" + a.AttendanceId + "]"].Equals("false"))
+                    {
+                        status = false;
+                    }
+                    _attendanceRepository.TakeAttendance(a.AttendanceId, status);
+                }
+                _sessionRepository.TakeAttendance(sessionId);
             }
-            return Page();
+
             return RedirectToPage("Timetable");
         }
     }

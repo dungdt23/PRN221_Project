@@ -33,6 +33,10 @@
                     <img src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width: 100%; height: 100%;">
                 </td>
                 <td>
+                    @if (s == Model.attendances.First())
+                    {
+                        <input type="hidden" name="sessionId" value="@s.SessionId" />
+                    }
                     @s.Student.LastName @s.Student.FirstName
                 </td>
                 <td>
@@ -42,20 +46,20 @@
                     @if (s.IsAbsent)
                     {
                         <div>
-                            Absent <input type="radio" checked="checked" name="attendance @s.Student.StudentId" value="true" asp-for="@s.IsAbsent">
-                            Present <input type="radio" name="attendance @s.Student.StudentId" value="false" asp-for="@s.IsAbsent">
+                            Absent <input type="radio" checked name="attendance[@s.AttendanceId]" value="true">
+                            Present <input type="radio" name="attendance[@s.AttendanceId]"  value="false">
                         </div>
                     }
                     else
                     {
                         <div>
-                            Absent <input type="radio" name="attendance @s.Student.StudentId" value="true" asp-for="@s.IsAbsent">
-                            Present <input type="radio" checked="checked" name="attendance @s.Student.StudentId" value="false" asp-for="@s.IsAbsent">
+                            Absent <input type="radio" name="attendance[@s.AttendanceId]" value="true">
+                            Present <input type="radio" checked name="attendance[@s.AttendanceId]" value="false">
                         </div>
                     }
                 </td>
             </tr>
         }
     </table>
-    <input type="submit" value="Save"/>
+    <input type="submit" value="Save" />
 </form>

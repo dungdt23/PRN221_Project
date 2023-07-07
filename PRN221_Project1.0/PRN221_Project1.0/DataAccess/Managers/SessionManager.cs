@@ -23,6 +23,15 @@ namespace PRN221_Project1._0.DataAccess.Managers
                                  .ToList();
             return sessions;
         }
+        public void TakeAttendance(int sessionId)
+        {
+            Session session = _context.Sessions.FirstOrDefault(s => s.SessionId == sessionId);
+            if (session != null)
+            {
+                session.IsAttended = true;
+            }
+            _context.SaveChanges();
+        }
 
     }
 }

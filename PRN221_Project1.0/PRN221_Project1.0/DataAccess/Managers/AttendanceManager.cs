@@ -16,5 +16,14 @@ namespace PRN221_Project1._0.DataAccess.Managers
                                         .Include(s => s.Student)
                                         .ToList();
         }
+        public void TakeAttendance(int attendanceId, bool status)
+        {
+            Attendance attendance = _context.Attendances.FirstOrDefault(s => s.AttendanceId == attendanceId);
+            if (attendance != null)
+            {
+                attendance.IsAbsent = status;
+            }
+            _context.SaveChanges();
+        }
     }
 }
