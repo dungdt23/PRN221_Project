@@ -1,0 +1,45 @@
+﻿@page
+@model PRN221_Project1._0.Pages.ViewAttendanceModel
+@{
+    Layout = "_MainLayout";
+}
+<body>
+    <form method="get">
+        <label for="comboboxGroupName">
+            GROUP NAME :
+        </label>
+        <select name="groupId">
+            @foreach (var g in Model.Groups)
+            {
+                <option value="@g.GroupId">@g.GroupName</option>
+            }
+        </select>
+        @if (Model.Students != null)
+        {
+            <table border="1">
+                <tr>
+                    <td>Student ID</td>
+                    <td>Student Name</td>
+                    <td>Attendance</td>
+                </tr>
+                @foreach (var s in Model.Students)
+                {
+                    @foreach (var ac in Model.AttendanceCheck)
+                    {
+                        @if (ac.Key.Equals(s.StudentId))
+                        {
+                            <tr>
+                                <td>@s.StudentId</td>
+                                <td>@s.LastName @s.FirstName</td>
+                                <td> @ac.Value % </td>
+                            </tr>
+                        }
+                    }
+
+                }
+            </table>
+        }
+
+        <input type="submit" style="border-radius: 10%;" value="View" />
+    </form>
+</body>

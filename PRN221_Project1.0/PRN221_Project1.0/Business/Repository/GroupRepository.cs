@@ -23,5 +23,12 @@ namespace PRN221_Project1._0.Business.Repository
             GroupDTO groupDTO = _mapper.Map<GroupDTO>(group);
             return groupDTO;
         }
+        public List<GroupDTO> GetGroups(string lectureId)
+        {
+            manager = new GroupManager(_context);
+            List<Group> groups = manager.GetGroups(lectureId);
+            List<GroupDTO> groupDTOs = _mapper.Map<List<GroupDTO>>(groups);
+            return groupDTOs;
+        }
     }
 }

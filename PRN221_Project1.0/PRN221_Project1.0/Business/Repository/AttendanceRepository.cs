@@ -30,5 +30,10 @@ namespace PRN221_Project1._0.Business.Repository
             manager = new AttendanceManager(_context);
             manager.TakeAttendance(attendanceId, status);
         }
+        public Dictionary<string, float> GetAttendances(int groupId)
+        {
+            manager = new AttendanceManager(_context);
+            return manager.GetAttendances(groupId);
+        }
     }
 }

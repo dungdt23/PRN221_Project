@@ -6,5 +6,6 @@ namespace PRN221_Project1._0.Business.IRepository
     {
         List<AttendanceDTO> GetAttendance(int sessionId);
         void TakeAttendance(int attendanceId, bool status);
+        Dictionary<string, float> GetAttendances(int groupId);
     }
 }

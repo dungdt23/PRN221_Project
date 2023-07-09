@@ -31,5 +31,6 @@ namespace PRN221_Project1._0.Business.Repository
             manager.TakeAttendance(sessionId);
         }
 
+
     }
 }

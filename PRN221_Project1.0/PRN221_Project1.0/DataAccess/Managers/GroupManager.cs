@@ -10,6 +10,7 @@ namespace PRN221_Project1._0.DataAccess.Managers
         {
             _context = context;
         }
+        //get group by sessionId
         public Group GetGroup(int sessionId)
         {
             try
@@ -23,6 +24,15 @@ namespace PRN221_Project1._0.DataAccess.Managers
 
                 return null;
             }
+        }
+        //get groups by lectureId
+        public List<Group> GetGroups(string lectureId)
+        {
+            List<Group> groups = new List<Group>();
+            groups = _context.Groups.Include(s => s.Course)
+                                    .Where(s => s.Course.LectureId.Equals(lectureId))
+                                    .ToList();
+            return groups;
         }
     }
 }

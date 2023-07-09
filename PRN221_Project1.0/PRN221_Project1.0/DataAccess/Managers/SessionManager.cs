@@ -32,6 +32,13 @@ namespace PRN221_Project1._0.DataAccess.Managers
             }
             _context.SaveChanges();
         }
+        public List<Session> AttendedSession(int groupId)
+        {
+            List<Session> sessions = new List<Session>();
+            sessions = _context.Sessions.Where(s => s.GroupId == groupId && s.IsAttended == true)
+                                     .ToList();
+            return sessions;
+        }
 
     }
 }
