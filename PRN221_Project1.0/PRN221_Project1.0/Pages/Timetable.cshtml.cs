@@ -69,6 +69,10 @@ namespace PRN221_Project1._0.Pages
                 DateTime now = DateTime.Now;
                 // calculate the Monday of the current week
                 DateTime monday = now.AddDays(-(int)now.DayOfWeek + (int)DayOfWeek.Monday);
+                if (now.DayOfWeek == 0)
+                {
+                    monday = now.AddDays(-(int)6);
+                }
                 selectedDates.Add(monday);
                 for (int i = 1; i < 7; i++)
                 {

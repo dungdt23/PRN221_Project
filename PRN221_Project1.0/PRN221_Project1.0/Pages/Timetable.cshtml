@@ -217,6 +217,7 @@
 
                 // Calculate the year and week number of the current date
                 const currentYear = currentDate.getFullYear();
+                updateWeek(currentYear);
                 const firstMondayOfYear = getMondayOfWeek(currentYear, 1);
                 const currentWeek = ((currentDate - firstMondayOfYear) / (7 * 86400000)) + 1;
 
@@ -225,10 +226,8 @@
                 weekSelect.value = parseInt(currentWeek);
                 // Call the displayDaysOfWeek function with the current year and week
                 displayDaysOfWeek(currentYear, parseInt(currentWeek));
+                console.log(currentYear + " and " +firstMondayOfYear);
 
-                // Set the action attribute of the form to the current year and week
-                const form = document.getElementById('form-select-week');
-                form.action = `/Timetable?year=${currentYear}&week=${currentWeek}`;
             }
         }
 
