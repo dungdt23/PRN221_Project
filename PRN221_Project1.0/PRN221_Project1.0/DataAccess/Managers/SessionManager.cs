@@ -39,6 +39,12 @@ namespace PRN221_Project1._0.DataAccess.Managers
                                      .ToList();
             return sessions;
         }
+        public List<Session> GetSessionsOfGroup(int groupId)
+        {
+            List<Session> sessions = new List<Session>();
+            sessions = _context.Sessions.Include(s => s.Slot).Where(s => s.GroupId == groupId).ToList();
+            return sessions;
+        }
 
     }
 }

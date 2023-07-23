@@ -23,6 +23,14 @@ namespace PRN221_Project1._0.Business.Repository
             List<StudentDTO> studentDTOs = _mapper.Map<List<StudentDTO>>(students);
             return studentDTOs;
         }
+        public StudentDTO GetStudent(string studentId)
+        {
+            manager = new StudentManager(_context);
+            Student student = manager.GetStudent(studentId);
+            StudentDTO studentDTO = _mapper.Map<StudentDTO>(student);
+            return studentDTO;
+        }
+
 
     }
 }

@@ -5,7 +5,7 @@
 
 }
 <form method="post" asp-page-handler="Attendance" asp-for="AttendanceModel">
-    <table border="1">
+    <table border="1" class="table table-striped table-bordered">
         <tr>
             <td>
                 Student ID
@@ -47,7 +47,7 @@
                     {
                         <div>
                             Absent <input type="radio" checked name="attendance[@s.AttendanceId]" value="true">
-                            Present <input type="radio" name="attendance[@s.AttendanceId]"  value="false">
+                            Present <input type="radio" name="attendance[@s.AttendanceId]" value="false">
                         </div>
                     }
                     else
@@ -61,5 +61,5 @@
             </tr>
         }
     </table>
-    <input type="submit" value="Save" />
+    <input type="submit" class="btn btn-primary" value="Save" />
 </form>

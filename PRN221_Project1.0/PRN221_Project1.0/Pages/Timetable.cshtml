@@ -51,10 +51,12 @@
                                                             @if (session.IsAttended == true)
                                                             {
                                                                 <h4 style="color:darkgreen">Attended</h4>
+                                                                <a href="/attendance?sessionId=@session.SessionId" style="color:darkgreen">View details</a>
                                                             }
                                                             else
-                                                            {                                                                                                                                                                                             
+                                                            {
                                                                 <h4 style="color:darkred">Not yet</h4>
+                                                                <a href="/attendance?sessionId=@session.SessionId" style="color:darkred">View details</a>
                                                             }
                                                         </div>
                                                     }
@@ -226,7 +228,7 @@
                 weekSelect.value = parseInt(currentWeek);
                 // Call the displayDaysOfWeek function with the current year and week
                 displayDaysOfWeek(currentYear, parseInt(currentWeek));
-                console.log(currentYear + " and " +firstMondayOfYear);
+                console.log(currentYear + " and " + firstMondayOfYear);
 
             }
         }

@@ -32,6 +32,11 @@ namespace PRN221_Project1._0.Pages
                 GroupDTO group = _groupRepository.GetGroup(sessionId.Value);
                 students = _studentRepository.GetStudents(group.GroupId);
                 attendances = _attendanceRepository.GetAttendance(sessionId.Value);
+                if (attendances.Count == 0)
+                {
+                    _attendanceRepository.CreateAttendance(sessionId.Value);
+                    attendances = _attendanceRepository.GetAttendance(sessionId.Value);
+                }
                 savedSessionId = sessionId.Value;
             }
         }

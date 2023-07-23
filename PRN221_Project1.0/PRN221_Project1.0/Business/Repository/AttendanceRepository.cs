@@ -35,5 +35,19 @@ namespace PRN221_Project1._0.Business.Repository
             manager = new AttendanceManager(_context);
             return manager.GetAttendances(groupId);
         }
+
+        public void CreateAttendance(int sessionId)
+        {
+            manager = new AttendanceManager(_context);
+            manager.CreateAttendance(sessionId);
+        }
+        public List<AttendanceDTO> GetAttendances(int groupId, string studentId)
+        {
+            manager = new AttendanceManager(_context);
+            List<Attendance> attendances = manager.GetAttendances(groupId, studentId);
+            List<AttendanceDTO> attendanceDTOs = _mapper.Map<List<AttendanceDTO>>(attendances);
+            return attendanceDTOs;
+        }
+
     }
 }

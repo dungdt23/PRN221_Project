@@ -3,43 +3,107 @@
 @{
     Layout = "_MainLayout";
 }
-<body>
-    <form method="get">
-        <label for="comboboxGroupName">
-            GROUP NAME :
-        </label>
-        <select name="groupId">
-            @foreach (var g in Model.Groups)
-            {
-                <option value="@g.GroupId">@g.GroupName</option>
-            }
-        </select>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="get">
+            <div class="form-group">
+                <label for="comboboxGroupName">GROUP NAME :</label>
+                <select name="groupId" class="form-control">
+                    @foreach (var g in Model.Groups)
+                    {
+                        if (g.GroupId == Model.groupId)
+                        {
+                            <option value="@g.GroupId" selected>@g.GroupName</option>
+                        }
+                        else
+                        {
+                            <option value="@g.GroupId">@g.GroupName</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="View" />
+            </div>
+        </form>
         @if (Model.Students != null)
         {
-            <table border="1">
-                <tr>
-                    <td>Student ID</td>
-                    <td>Student Name</td>
-                    <td>Attendance</td>
-                </tr>
-                @foreach (var s in Model.Students)
-                {
-                    @foreach (var ac in Model.AttendanceCheck)
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Absent Percentage</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model.Students)
                     {
-                        @if (ac.Key.Equals(s.StudentId))
+                        foreach (var ac in Model.AttendanceCheck)
+                        {
+                            if (ac.Key.Equals(s.StudentId))
+                            {
+                                <tr>
+                                    <td>@s.StudentId</td>
+                                    <td>@s.LastName @s.FirstName</td>
+                                    <td>@ac.Value %</td>
+                                    <td><a href="/viewattendance?groupId=@Model.groupId&studentId=@s.StudentId">View Details</a></td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <div class="col-md-6">
+        @if (Model.attendanceDetails != null && Model.sessionDetails != null)
+        {
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Session Date</th>
+                        <th>Student Information</th>
+                        <th>Attend Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model.sessionDetails)
+                    {
+                        if (s.IsAttended == true)
+                        {
+                            foreach (var a in Model.attendanceDetails)
+                            {
+                                if (a.SessionId == s.SessionId)
+                                {
+                                    <tr>
+                                        <td>@s.Date.ToShortDateString() - @s.Slot.SlotName</td>
+                                        <td>@a.StudentId - @a.Student.LastName @a.Student.FirstName </td>
+                                        @if (a.IsAbsent)
+                                        {
+                                            <td style="color: red"st>Absent</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="color: green">Attended</td>
+                                        }
+                                    </tr>
+                                }
+                            }
+                        }
+                        else
                         {
                             <tr>
-                                <td>@s.StudentId</td>
-                                <td>@s.LastName @s.FirstName</td>
-                                <td> @ac.Value % </td>
+                                <td>@s.Date.ToShortDateString() - @s.Slot.SlotName</td>
+                                <td>@Model.studentDetail.StudentId - @Model.studentDetail.LastName @Model.studentDetail.FirstName</td>
+                                <td style="color: gray">Not yet</td>
                             </tr>
                         }
                     }
-
-                }
+                </tbody>
             </table>
         }
-
-        <input type="submit" style="border-radius: 10%;" value="View" />
-    </form>
-</body>
+    </div>
+</div>
