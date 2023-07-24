@@ -6,5 +6,6 @@ namespace PRN221_Project1._0.Business.IRepository
     {
         List<StudentDTO> GetStudents(int groupId);
         StudentDTO GetStudent(string studentId);
+        List<StudentDTO> GetAllStudents();
     }
 }

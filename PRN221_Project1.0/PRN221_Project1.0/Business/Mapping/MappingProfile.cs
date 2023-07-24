@@ -20,6 +20,16 @@ namespace PRN221_Project1._0.Business.Mapping
             CreateMap<EnrollDTO, Enroll>();
             CreateMap<Student, StudentDTO>();
             CreateMap<StudentDTO, Student>();
+            CreateMap<CampusDTO, Campus>();
+            CreateMap<Campus, CampusDTO>();
+            CreateMap<TermDTO, Term>();
+            CreateMap<Term, TermDTO>();
+            CreateMap<SubjectDTO, Subject>();
+            CreateMap<Subject, SubjectDTO>();
+            CreateMap<CourseDTO, Course>();
+            CreateMap<Course, CourseDTO>();
+            CreateMap<RoomDTO, Room>();
+            CreateMap<Room, RoomDTO>();
             CreateMap<Attendance, AttendanceDTO>()
                 .ForMember(dest => dest.Student, act => act.MapFrom(src => src.Student));
             CreateMap<AttendanceDTO, Attendance>()

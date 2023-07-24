@@ -1,0 +1,185 @@
+﻿@page
+@model PRN221_Project1._0.Pages.ManageGroupModel
+@{
+    Layout = "_ManageLayout";
+
+}
+<script src="/js/site.js"></script>
+<link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#createGradeModal">
+    Add new group
+</button>
+<!-- Notice  -->
+@if (TempData.ContainsKey("messageResponse"))
+{
+    <div class="form-group">
+        <p class="text-danger">@TempData["messageResponse"]</p>
+    </div>
+}
+<form method="get">
+    <p>Lecture</p>
+    <select name="lectureIdFilter">
+        <option value="">None</option>
+        @foreach (var item in Model.lectures)
+        {
+            <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
+        }
+    </select>
+    <p>Term</p>
+    <select name="termIdFilter">
+        <option value="">None</option>
+        @foreach (var item in Model.terms)
+        {
+            <option value="@item.TermId">@item.TermName </option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">View</button>
+</form>
+@if (Model.groups != null)
+{
+    <table id="table" class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Group ID</th>
+                <th>Group Name</th>
+                <th>Lecture</th>
+                <th>Subject</th>
+                <th>Term</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var c in Model.groups)
+        {
+            <tr>
+                <td>@c.GroupId</td>
+                <td>@c.GroupName</td>
+                <td>@c.Course.Lecture.LectureLastName @c.Course.Lecture.LectureFirstName</td>
+                <td>@c.Course.CourseName</td>
+                <td>@c.Course.Term.TermName</td>
+                <td><a href="/ManageGroup?lectureIdFilter=@Model.lectureIdFilter&termIdFilter=@Model.termIdFilter&groupId=@c.GroupId">View Members</a></td>
+            </tr>
+
+        }
+    </table>
+    @if (Model.isStarted == false)
+    {
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#createStudent">
+            Add new student
+        </button>
+    }
+}
+@if (Model.enrolls != null)
+{
+    <table id="table" class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (var c in Model.enrolls)
+        {
+            <tr>
+                <td>@c.Student.StudentId</td>
+                <td>@c.Student.LastName @c.Student.FirstName</td>
+                <td>
+                    <button type="button" class="btn btn-link btn-sm btn-rounded"
+                    onclick="openPopupDelete('@c.StudentId')">
+                        Delete
+                    </button>
+                    <input type="hidden" name="groupId" value="@c.GroupId">
+                </td>
+            </tr>
+        }
+    </table>
+}
+<!-- Modal Create Group -->
+<div class="modal fade" id="createGradeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-page-handler="CreateGroup" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Semester</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Group Name</p>
+                    <input type="text" name="groupName" class="w-100" />
+                    <br />
+                    <p>Course</p>
+                    <select name="courseId">
+                        @foreach (var item in Model.courses)
+                        {
+                            <option value="@item.CourseId">@item.CourseName - @item.Lecture.LectureLastName @item.Lecture.LectureFirstName</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal Create Student -->
+<div class="modal fade" id="createStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-page-handler="CreateStudent" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Semester</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Student ID - Student Name</p>
+                    <input type="hidden" value="@Model.groupIdFilter" name="groupIdFilter"/>
+                    <input type="hidden" value="@Model.lectureIdFilter" name="lectureIdFilter"/>
+                    <input type="hidden" value="@Model.termIdFilter" name="termIdFilter"/>
+                    <select name="studentId">
+                        @foreach (var item in Model.students)
+                        {
+                            <option value="@item.StudentId">@item.StudentId - @item.LastName @item.FirstName</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal Delete Semester -->
+<div class="modal fade" id="deleteMedicineModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-page-handler="DeleteStudent" method="post">
+            <div class="modal-content">
+                <input type="hidden" value="@Model.groupIdFilter" name="groupIdFilter" />
+                <input type="hidden" value="@Model.lectureIdFilter" name="lectureIdFilter" />
+                <input type="hidden" value="@Model.termIdFilter" name="termIdFilter" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Student</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close" onclick="closePopup('deleteMedicineModal')"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="deleteMedicineid" type="hidden" name="studentId" />
+                    <p> Do you want Delete this student ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closePopup('deleteMedicineModal')">Cancle</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function openPopupDelete(studentId) {
+        var inputId = document.getElementById("deleteMedicineid");
+        inputId.value = studentId;
+        $('#deleteMedicineModal').modal('show');
+    }
+</script>

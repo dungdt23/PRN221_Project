@@ -1,0 +1,124 @@
+﻿@page
+@model PRN221_Project1._0.Pages.ManageCourseModel
+@{
+    Layout = "_ManageLayout";
+
+}
+<script src="/js/site.js"></script>
+<link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+
+<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#createGradeModal">
+    Add new course
+</button>
+<form method="get">
+    <p>Lecture</p>
+    <select name="lectureIdFilter">
+        <option value="">None</option>
+        @foreach (var item in Model.lectures)
+        {
+            <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
+        }
+    </select>
+    <p>Subject</p>
+    <select name="subjectIdFilter">
+        <option value="">None</option>
+        @foreach (var item in Model.subjects)
+        {
+            <option value="@item.SubjectId">@item.SubjectName </option>
+        }
+    </select>
+    <p>Term</p>
+    <select name="termIdFilter">
+        <option value="">None</option>
+        @foreach (var item in Model.terms)
+        {
+            <option value="@item.TermId">@item.TermName </option>
+        }
+    </select>
+    <p>Campus</p>
+    <select name="campusIdFilter">
+        <option value="">None</option>
+        @foreach (var item in Model.campuses)
+        {
+            <option value="@item.CampusId">@item.CampusName </option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary" >View</button>
+</form>
+<!-- Modal Create Medicine -->
+<div class="modal fade" id="createGradeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-page-handler="CreateCourse" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Semester</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Course Name</p>
+                    <input type="text" name="courseName" class="w-100" />
+                    <br />
+                    <p>Course Code</p>
+                    <input type="text" name="courseCode" class="w-100" />
+                    <br />
+                    <p>Lecture</p>
+                    <select name="lectureId">
+                        @foreach (var item in Model.lectures)
+                        {
+                            <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
+                        }
+                    </select>
+                    <p>Subject</p>
+                    <select name="subjectId">
+                        @foreach (var item in Model.subjects)
+                        {
+                            <option value="@item.SubjectId">@item.SubjectName </option>
+                        }
+                    </select>
+                    <p>Term</p>
+                    <select name="termId">
+                        @foreach (var item in Model.terms)
+                        {
+                            <option value="@item.TermId">@item.TermName </option>
+                        }
+                    </select>
+                    <p>Campus</p>
+                    <select name="campusId">
+                        @foreach (var item in Model.campuses)
+                        {
+                            <option value="@item.CampusId">@item.CampusName </option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<table id="table" class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Lecture</th>
+            <th>Subject</th>
+            <th>Term</th>
+            <th>Campus</th>
+        </tr>
+    </thead>
+    @foreach (var c in Model.courses)
+    {
+        <tr>
+            <td>@c.CourseId</td>
+            <td>@c.CourseName</td>
+            <td>@c.Lecture.LectureLastName @c.Lecture.LectureFirstName</td>
+            <td>@c.Subject.SubjectName</td>
+            <td>@c.Term.TermName</td>
+            <td>@c.Campus.CampusName</td>
+        </tr>
+
+    }
+</table>

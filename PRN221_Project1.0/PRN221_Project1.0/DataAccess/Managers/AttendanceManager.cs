@@ -97,6 +97,37 @@ namespace PRN221_Project1._0.DataAccess.Managers
             }
 
         }
+        public void UpdateAddAttendance(string studentId, int groupId)
+        {
+            SessionManager sessionManager = new SessionManager(_context);
+            List<Session> sessions = sessionManager.GetSessionsOfGroup(groupId);
+            //Attendance attendance = _context.Attendances
+            //    .Include(s => s.Session)
+            //    .FirstOrDefault(s => s.StudentId.Equals(studentId) && s.Session.GroupId == groupId);
+            //if (attendance == null)
+            //{ }
+            foreach (var item in sessions)
+            {
+                Attendance attendance = new Attendance();
+                attendance.IsAbsent = true;
+                attendance.StudentId = studentId;
+                attendance.SessionId = item.SessionId;
+                attendance.Comment = "";
+                _context.Attendances.Add(attendance);
+                _context.SaveChanges();
+            }
+
+
+        }
+        public void UpdateRemoveAttendance(string studentId, int groupId)
+        {
+            List<Attendance> attendances = _context.Attendances.Include(s => s.Session).Where(s => s.StudentId.Equals(studentId) && s.Session.GroupId == groupId).ToList();
+            if (attendances != null)
+            {
+                _context.Attendances.RemoveRange(attendances);
+                _context.SaveChanges();
+            }
+        }
         public List<Attendance> GetAttendances(int groupId, string studentId)
         {
             StudentManager studentManager = new StudentManager(_context);

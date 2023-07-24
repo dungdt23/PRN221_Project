@@ -27,7 +27,7 @@ namespace PRN221_Project1._0.Pages
             _attendanceRepository = attendanceRepository;
             _sessionRepository = sessionRepository;
         }
-        public void OnGet(int? groupId, string? studentId)
+        public IActionResult OnGet(int? groupId, string? studentId)
         {
             //get lecture 
             string json = HttpContext.Session.GetString("lecture");
@@ -47,6 +47,12 @@ namespace PRN221_Project1._0.Pages
                         studentDetail = _studentRepository.GetStudent(studentId);
                     }
                 }
+                return Page();
+            }
+            else
+            {
+                // Redirect the user to the login page
+                return RedirectToPage("/Login");
             }
         }
     }

@@ -40,6 +40,11 @@ namespace PRN221_Project1._0.Business.Repository
             manager = new SessionManager(_context);
             manager.TakeAttendance(sessionId);
         }
+        public bool CreateSession(int groupId, DateTime date, int slotId, int roomId)
+        {
+            manager = new SessionManager(_context);
+            return manager.CreateSession(groupId, date, slotId, roomId);
+        }
 
 
     }

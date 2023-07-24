@@ -48,6 +48,17 @@ namespace PRN221_Project1._0.Business.Repository
             List<AttendanceDTO> attendanceDTOs = _mapper.Map<List<AttendanceDTO>>(attendances);
             return attendanceDTOs;
         }
+        public void UpdateRemoveAttendance(string studentId, int groupId)
+        {
+            manager = new AttendanceManager(_context);
+            manager.UpdateRemoveAttendance(studentId, groupId);
+
+        }
+        public void UpdateAddAttendance(string studentId, int groupId)
+        {
+            manager = new AttendanceManager(_context);
+            manager.UpdateAddAttendance(studentId, groupId);
+        }
 
     }
 }

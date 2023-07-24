@@ -45,7 +45,7 @@
                                                 {
                                                     @if (session.SlotId == slot.SlotId && session.Date.Date.Equals(date.Date))
                                                     {
-                                                        <h4>@session.Group.Course.CourseCode</h4>
+                                                        <h4>@session.Group.Course.CourseCode - @session.Group.GroupName</h4>
                                                         <h4>at @session.Room.RoomCode</h4>
                                                         <div class="hover">
                                                             @if (session.IsAttended == true)

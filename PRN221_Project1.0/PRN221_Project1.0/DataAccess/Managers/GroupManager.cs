@@ -34,5 +34,48 @@ namespace PRN221_Project1._0.DataAccess.Managers
                                     .ToList();
             return groups;
         }
+
+        //get groups by lectureId and termId
+        public List<Group> GetGroupsByLectureTerm(string? lectureId, int? termId)
+        {
+            IQueryable<Group> query = _context.Groups.Include(s => s.Course)
+                                                      .ThenInclude(s => s.Lecture)
+                                                      .Include(s => s.Course)
+                                                      .ThenInclude(s => s.Term);
+
+            if (!string.IsNullOrEmpty(lectureId))
+            {
+                query = query.Where(s => s.Course.LectureId.Equals(lectureId));
+            }
+            if (termId != null)
+            {
+                query = query.Where(s => s.Course.TermId == termId);
+            }
+
+            return query.ToList();
+        }
+        public void CreateGroup(Group group)
+        {
+            _context.Groups.Add(group);
+            _context.SaveChanges();
+        }
+        //check if group start 
+        public bool IsStarted(int groupId)
+        {
+            List<Group> groups = _context.Groups.ToList();
+            List<Session> sessions = _context.Sessions.Where(s => s.GroupId == groupId && s.IsAttended == true).ToList();
+            if (sessions.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public List<Group> GetAllGroups()
+        {
+            return _context.Groups.Include(s => s.Course).ThenInclude(s => s.Lecture).ToList();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace PRN221_Project1._0.Pages
             _sessionRepository = sessionRepository;
             _slotRepository = slotRepository;
         }
-        public void OnGet(int? year, int? week)
+        public IActionResult OnGet(int? year, int? week)
         {
             slots = _slotRepository.GetSlots();
 
@@ -45,9 +45,17 @@ namespace PRN221_Project1._0.Pages
                 DateTime from = dates.First();
                 DateTime to = dates.Last();
                 sessions = _sessionRepository.GetSessions(lecture.LectureId, from, to);
+                return Page();
 
             }
+            else
+            {
+                // Redirect the user to the login page
+                return RedirectToPage("/Login");
+            }
+
         }
+
 
         //get list of dates which in selected week
         public void getWeeks()

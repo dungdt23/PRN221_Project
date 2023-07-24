@@ -25,6 +25,11 @@ namespace PRN221_Project1._0.DataAccess.Managers
             }
             return students;
         }
+        public List<Student> GetAllStudents()
+        {
+            List<Student> students = _context.Students.ToList();
+            return students;
+        }
 
     }
 }

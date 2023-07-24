@@ -23,5 +23,9 @@ namespace PRN221_Project1._0.DataAccess.Managers
             }
             return lecture;
         }
+        public List<Lecture> GetLectures()
+        {
+            return _context.Lectures.ToList();
+        }
     }
 }

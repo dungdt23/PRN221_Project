@@ -23,5 +23,15 @@ namespace PRN221_Project1._0.Business.Repository
             List<EnrollDTO> enrollDTOs = _mapper.Map<List<EnrollDTO>>(enrolls);
             return enrollDTOs;
         }
+        public void AddEnroll(string studentId, int groupId)
+        {
+            manager = new EnrollManager(_context);
+            manager.AddEnroll(studentId, groupId);
+        }
+        public void RemoveEnroll(string studentId, int groupId)
+        {
+            manager = new EnrollManager(_context);
+            manager.RemoveEnroll(studentId, groupId);
+        }
     }
 }

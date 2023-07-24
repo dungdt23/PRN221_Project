@@ -42,8 +42,40 @@ namespace PRN221_Project1._0.DataAccess.Managers
         public List<Session> GetSessionsOfGroup(int groupId)
         {
             List<Session> sessions = new List<Session>();
-            sessions = _context.Sessions.Include(s => s.Slot).Where(s => s.GroupId == groupId).ToList();
+            sessions = _context.Sessions.Include(s => s.Room).Include(s => s.Slot).Where(s => s.GroupId == groupId).ToList();
             return sessions;
+        }
+        public bool CreateSession(int groupId, DateTime date, int slotId, int roomId)
+        {
+            Session session = new Session();
+            session.GroupId = groupId;
+            session.Date = date;
+            session.SlotId = slotId;
+            session.RoomId = roomId;
+            session.IsAttended = false;
+            if (isExisted(date, slotId))
+            {
+                return false;
+            }
+            else
+            {
+                _context.Sessions.Add(session);
+                _context.SaveChanges();
+                return true;
+            }
+        }
+        public bool isExisted(DateTime date, int slotId)
+        {
+            List<Session> sessions = _context.Sessions.Where(s => s.SlotId == slotId && s.Date == date)
+                                                      .ToList();
+            if (sessions == null || sessions.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
     }

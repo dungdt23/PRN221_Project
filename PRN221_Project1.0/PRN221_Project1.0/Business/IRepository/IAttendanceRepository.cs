@@ -9,5 +9,7 @@ namespace PRN221_Project1._0.Business.IRepository
         Dictionary<string, float> GetAttendances(int groupId);
         void CreateAttendance(int sessionId);
         List<AttendanceDTO> GetAttendances(int groupId, string studentId);
+        void UpdateRemoveAttendance(string studentId, int groupId);
+        void UpdateAddAttendance(string studentId, int groupId);
     }
 }

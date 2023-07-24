@@ -39,7 +39,26 @@ builder.Services.AddTransient<IStudentRepository, StudentRepository>()
 builder.Services.AddTransient<IAttendanceRepository, AttendanceRepository>()
     .AddDbContext<Prn221MyAssignmentContext>(opt =>
     builder.Configuration.GetConnectionString("DB"));
-
+//term
+builder.Services.AddTransient<ITermRepository, TermRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//subject
+builder.Services.AddTransient<ISubjectRepository, SubjectRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//campus
+builder.Services.AddTransient<ICampusRepository, CampusRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//course
+builder.Services.AddTransient<ICourseRepository, CourseRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
+//room
+builder.Services.AddTransient<IRoomRepository, RoomRepository>()
+    .AddDbContext<Prn221MyAssignmentContext>(opt =>
+    builder.Configuration.GetConnectionString("DB"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -56,5 +75,12 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.UseSession();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Login}/{action=Index}/{id?}");
+});
 
 app.Run();

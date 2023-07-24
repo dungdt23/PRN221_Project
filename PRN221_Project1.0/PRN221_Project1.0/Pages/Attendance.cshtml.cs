@@ -39,6 +39,7 @@ namespace PRN221_Project1._0.Pages
                 }
                 savedSessionId = sessionId.Value;
             }
+
         }
         public IActionResult OnPost()
         {

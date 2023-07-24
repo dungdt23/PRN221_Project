@@ -16,6 +16,15 @@ namespace PRN221_Project1._0.Business.Repository
             _context = context;
             _mapper = mapper;
         }
+
+        public List<LectureDTO> GetAllLectures()
+        {
+            manager = new LectureManager(_context);
+            List<Lecture> lectures = manager.GetLectures();
+            List<LectureDTO> lectureDTOs = _mapper.Map<List<LectureDTO>>(lectures);
+            return lectureDTOs;
+        }
+
         public LectureDTO GetLecture(string username, string password)
         {
             manager = new LectureManager(_context);

@@ -1,0 +1,100 @@
+﻿@page
+@model PRN221_Project1._0.Pages.ManageSessionModel
+@{
+    Layout = "_ManageLayout";
+
+}
+<script src="/js/site.js"></script>
+<link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+<h2>View sessions of group</h2>
+@if (TempData.ContainsKey("messageResponse"))
+{
+    <div class="form-group">
+        <p class="text-danger">@TempData["messageResponse"]</p>
+    </div>
+}
+<form method="get">
+    <p>Group</p>
+    <select name="groupId">
+        <option value="">None</option>
+        @foreach (var item in Model.groups)
+        {
+            <option value="@item.GroupId">@item.GroupName - @item.Course.CourseName - @item.Course.Lecture.LectureId</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">View</button>
+</form>
+@if (Model.sessions != null)
+{
+    <table id="table" class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Session Date</th>
+                <th>Session Slot</th>
+                <th>Session Room</th>
+                <th>Attend Status</th>
+            </tr>
+        </thead>
+        @foreach (var c in Model.sessions)
+        {
+            <tr>
+                <td>@c.Date.ToShortDateString()</td>
+                <td>@c.Slot.SlotName</td>
+                <td>@c.Room.RoomCode</td>
+                @if (c.IsAttended == true)
+                {
+                 <td>Attended</td> 
+                }
+                else
+                {
+                 <td>Not yet</td>
+                }
+            </tr>
+
+        }
+    </table>
+    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#createGradeModal">
+        Add new session
+    </button>
+}
+<!-- Modal Create Group -->
+<div class="modal fade" id="createGradeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-page-handler="CreateSession" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Semester</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="groupId" value="@Model.groupId"/>
+                    <p>Date</p>
+                    <input type="date" name="date" class="w-100" />
+                    <br />
+                    <p>Slot</p>
+                    <select name="slot">
+                        <option value="">None</option>
+                        @foreach (var item in Model.slots)
+                        {
+                            <option value="@item.SlotId">@item.SlotName </option>
+                        }
+                    </select>
+                    <br />
+                    <p>Room</p>
+                    <select name="room">
+                        <option value="">None</option>
+                        @foreach (var item in Model.rooms)
+                        {
+                            <option value="@item.RoomId">@item.RoomCode </option>
+                        }
+                    </select>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
