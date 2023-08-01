@@ -38,8 +38,20 @@ namespace PRN221_Project1._0.Pages
             this.studentRepository = studentRepository;
             this.attendanceRepository = attendanceRepository;
         }
-        public void OnGet(string? lectureIdFilter, int? termIdFilter, int? groupId)
+        public IActionResult OnGet(string? lectureIdFilter, int? termIdFilter, int? groupId)
         {
+            string wsadmin = HttpContext.Session.GetString("admin");
+            string json = HttpContext.Session.GetString("lecture");
+            if (wsadmin == null && json == null)
+            {
+                // Redirect the user to the login page
+                return RedirectToPage("/Login");
+            }
+            if (json != null)
+            {
+                return RedirectToPage("/Timetable");
+
+            }
             if (!string.IsNullOrEmpty(lectureIdFilter) || termIdFilter != null)
             {
                 groups = groupRepository.GetGroupsByLectureTerm(lectureIdFilter, termIdFilter);
@@ -67,6 +79,7 @@ namespace PRN221_Project1._0.Pages
             this.lectureIdFilter = lectureIdFilter;
             this.termIdFilter = termIdFilter;
             groupIdFilter = groupId;
+            return Page();
 
         }
         public IActionResult OnPostCreateGroup()

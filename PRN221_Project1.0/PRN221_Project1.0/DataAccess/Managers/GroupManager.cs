@@ -30,6 +30,7 @@ namespace PRN221_Project1._0.DataAccess.Managers
         {
             List<Group> groups = new List<Group>();
             groups = _context.Groups.Include(s => s.Course)
+                                    .ThenInclude(s => s.Lecture)
                                     .Where(s => s.Course.LectureId.Equals(lectureId))
                                     .ToList();
             return groups;
@@ -76,6 +77,13 @@ namespace PRN221_Project1._0.DataAccess.Managers
         public List<Group> GetAllGroups()
         {
             return _context.Groups.Include(s => s.Course).ThenInclude(s => s.Lecture).ToList();
+        }
+        public Lecture GetLecture(int groupId)
+        {
+            Group group = _context.Groups.Include(s => s.Course)
+                                             .ThenInclude(s => s.Lecture)
+                                             .FirstOrDefault(s => s.GroupId == groupId);
+            return group.Course.Lecture;
         }
     }
 }

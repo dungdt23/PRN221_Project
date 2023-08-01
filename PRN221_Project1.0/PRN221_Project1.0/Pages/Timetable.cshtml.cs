@@ -35,7 +35,11 @@ namespace PRN221_Project1._0.Pages
             }
             //get dates in selected week
             getWeeks();
-
+            string wsadmin = HttpContext.Session.GetString("admin");
+            if (!string.IsNullOrEmpty(wsadmin))
+            {
+                return RedirectToPage("/ManageGroup");
+            }
             //get lecture 
             string json = HttpContext.Session.GetString("lecture");
             if (!string.IsNullOrEmpty(json))

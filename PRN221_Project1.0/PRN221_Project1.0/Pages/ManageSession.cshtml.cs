@@ -27,8 +27,20 @@ namespace PRN221_Project1._0.Pages
             this.slotRepository = slotRepository;
             this.roomRepository = roomRepository;
         }
-        public void OnGet(int? groupId)
+        public IActionResult OnGet(int? groupId)
         {
+            string wsadmin = HttpContext.Session.GetString("admin");
+            string json = HttpContext.Session.GetString("lecture");
+            if (wsadmin == null && json == null)
+            {
+                // Redirect the user to the login page
+                return RedirectToPage("/Login");
+            }
+            if (json != null)
+            {
+                return RedirectToPage("/Timetable");
+
+            }
             slots = slotRepository.GetSlots();
             groups = groupRepository.GetAllGroups();
             rooms = roomRepository.GetRooms();
@@ -37,6 +49,7 @@ namespace PRN221_Project1._0.Pages
                 sessions = sessionRepository.GetSessionsOfGroup(groupId.Value);
                 this.groupId = groupId.Value;
             }
+            return Page();
         }
         public IActionResult OnPostCreateSession()
         {
@@ -44,7 +57,8 @@ namespace PRN221_Project1._0.Pages
             DateTime date = DateTime.Parse(HttpContext.Request.Form["date"]);
             int slotId = Int32.Parse(HttpContext.Request.Form["slot"]);
             int roomId = Int32.Parse(HttpContext.Request.Form["room"]);
-            if (sessionRepository.CreateSession(groupId, date, slotId, roomId))
+            LectureDTO lectureDTO = groupRepository.GetLecture(groupId);
+            if (sessionRepository.CreateSession(groupId, date, slotId, roomId, lectureDTO.LectureId))
             {
                 TempData["messageResponse"] = "Add success";
 

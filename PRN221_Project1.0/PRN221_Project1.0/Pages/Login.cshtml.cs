@@ -18,23 +18,46 @@ namespace PRN221_Project1._0.Pages
         {
             _lectureRepository = lectureRepository;
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            string json = HttpContext.Session.GetString("lecture");
+            if (!string.IsNullOrEmpty(json))
+            {
+                return RedirectToPage("/Timetable");
+            }
+            else
+            {
+                string wsadmin = HttpContext.Session.GetString("admin");
+                if (!string.IsNullOrEmpty(wsadmin))
+                {
+                    return RedirectToPage("/ManageGroup");
+                }
+            }
+            return Page();
+
         }
         public IActionResult OnPost()
         {
             LectureDTO lecture = _lectureRepository.GetLecture(username, password);
-            if (lecture != null)
+            if (username.Equals("wsadmin@gmail.com") && password.Equals("admin123"))
             {
-                string json = JsonConvert.SerializeObject(lecture);
-                HttpContext.Session.SetString("lecture", json);
-                msg = "login success";
-                return RedirectToPage("Timetable");
+                HttpContext.Session.SetString("admin", username);
+                return RedirectToPage("ManageGroup");
             }
             else
             {
-                msg = "Invalid";
-                return Page();
+                if (lecture != null)
+                {
+                    string json = JsonConvert.SerializeObject(lecture);
+                    HttpContext.Session.SetString("lecture", json);
+                    msg = "login success";
+                    return RedirectToPage("Timetable");
+                }
+                else
+                {
+                    msg = "Invalid";
+                    return Page();
+                }
             }
 
         }

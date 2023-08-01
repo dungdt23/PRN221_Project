@@ -15,11 +15,18 @@
 }
 <form method="get">
     <p>Group</p>
-    <select name="groupId">
+    <select name="groupId" class="form-control">
         <option value="">None</option>
         @foreach (var item in Model.groups)
         {
-            <option value="@item.GroupId">@item.GroupName - @item.Course.CourseName - @item.Course.Lecture.LectureId</option>
+            @if (item.GroupId == Model.groupId)
+            {
+                <option value="@item.GroupId" selected>@item.GroupName - @item.Course.CourseName - @item.Course.Lecture.LectureId</option>
+            }
+            else
+            {
+                <option value="@item.GroupId">@item.GroupName - @item.Course.CourseName - @item.Course.Lecture.LectureId</option>
+            }
         }
     </select>
     <button type="submit" class="btn btn-primary">View</button>
@@ -43,11 +50,11 @@
                 <td>@c.Room.RoomCode</td>
                 @if (c.IsAttended == true)
                 {
-                 <td>Attended</td> 
+                    <td>Attended</td>
                 }
                 else
                 {
-                 <td>Not yet</td>
+                    <td>Not yet</td>
                 }
             </tr>
 
@@ -67,12 +74,12 @@
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="groupId" value="@Model.groupId"/>
+                    <input type="hidden" name="groupId" value="@Model.groupId" />
                     <p>Date</p>
                     <input type="date" name="date" class="w-100" />
                     <br />
                     <p>Slot</p>
-                    <select name="slot">
+                    <select name="slot" class="form-control">
                         <option value="">None</option>
                         @foreach (var item in Model.slots)
                         {

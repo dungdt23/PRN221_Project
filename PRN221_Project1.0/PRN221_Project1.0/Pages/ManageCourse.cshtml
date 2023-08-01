@@ -12,46 +12,80 @@
 </button>
 <form method="get">
     <p>Lecture</p>
-    <select name="lectureIdFilter">
+    <select name="lectureIdFilter" class="form-control">
         <option value="">None</option>
         @foreach (var item in Model.lectures)
         {
-            <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
+            @if (item.LectureId.Equals(Model.lectureIdFilter))
+            {
+                <option value="@item.LectureId" selected>@item.LectureLastName @item.LectureFirstName</option>
+            }
+            else
+            {
+                <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
+            }
         }
     </select>
     <p>Subject</p>
-    <select name="subjectIdFilter">
+    <select name="subjectIdFilter" class="form-control">
         <option value="">None</option>
         @foreach (var item in Model.subjects)
         {
-            <option value="@item.SubjectId">@item.SubjectName </option>
+            @if (item.SubjectId == Model.subjectIdFilter)
+            {
+                <option value="@item.SubjectId" selected>@item.SubjectName </option>
+
+            }
+            else
+            {
+                <option value="@item.SubjectId">@item.SubjectName </option>
+
+            }
         }
     </select>
     <p>Term</p>
-    <select name="termIdFilter">
+    <select name="termIdFilter" class="form-control">
         <option value="">None</option>
         @foreach (var item in Model.terms)
         {
-            <option value="@item.TermId">@item.TermName </option>
+            @if (item.TermId == Model.termIdFilter)
+            {
+                <option value="@item.TermId" selected>@item.TermName </option>
+
+            }
+            else
+            {
+                <option value="@item.TermId">@item.TermName </option>
+
+            }
         }
     </select>
     <p>Campus</p>
-    <select name="campusIdFilter">
+    <select name="campusIdFilter" class="form-control">
         <option value="">None</option>
         @foreach (var item in Model.campuses)
         {
-            <option value="@item.CampusId">@item.CampusName </option>
+            @if (item.CampusId == Model.campusIdFilter)
+            {
+                <option value="@item.CampusId " selected>@item.CampusName </option>
+
+            }
+            else
+            {
+                <option value="@item.CampusId">@item.CampusName </option>
+
+            }
         }
     </select>
-    <button type="submit" class="btn btn-primary" >View</button>
+    <button type="submit" class="btn btn-primary">View</button>
 </form>
-<!-- Modal Create Medicine -->
+<!-- Modal Create  -->
 <div class="modal fade" id="createGradeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form asp-page-handler="CreateCourse" method="post">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create Semester</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Course</h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -62,28 +96,28 @@
                     <input type="text" name="courseCode" class="w-100" />
                     <br />
                     <p>Lecture</p>
-                    <select name="lectureId">
+                    <select name="lectureId" class="form-control">
                         @foreach (var item in Model.lectures)
                         {
                             <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
                         }
                     </select>
                     <p>Subject</p>
-                    <select name="subjectId">
+                    <select name="subjectId" class="form-control">
                         @foreach (var item in Model.subjects)
                         {
                             <option value="@item.SubjectId">@item.SubjectName </option>
                         }
                     </select>
                     <p>Term</p>
-                    <select name="termId">
+                    <select name="termId" class="form-control">
                         @foreach (var item in Model.terms)
                         {
                             <option value="@item.TermId">@item.TermName </option>
                         }
                     </select>
                     <p>Campus</p>
-                    <select name="campusId">
+                    <select name="campusId" class="form-control">
                         @foreach (var item in Model.campuses)
                         {
                             <option value="@item.CampusId">@item.CampusName </option>

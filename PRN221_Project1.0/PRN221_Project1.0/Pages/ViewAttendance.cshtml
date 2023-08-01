@@ -14,11 +14,11 @@
                     {
                         if (g.GroupId == Model.groupId)
                         {
-                            <option value="@g.GroupId" selected>@g.GroupName</option>
+                            <option value="@g.GroupId" selected>@g.GroupName - @g.Course.CourseName</option>
                         }
                         else
                         {
-                            <option value="@g.GroupId">@g.GroupName</option>
+                            <option value="@g.GroupId">@g.GroupName - @g.Course.CourseName</option>
                         }
                     }
                 </select>

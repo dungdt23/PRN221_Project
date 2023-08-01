@@ -11,5 +11,6 @@ namespace PRN221_Project1._0.Business.IRepository
         void CreateGroup(Group group);
         bool IsStarted(int groupId);
         List<GroupDTO> GetAllGroups();
+        LectureDTO GetLecture(int groupId);
     }
 }

@@ -8,6 +8,6 @@ namespace PRN221_Project1._0.Business.IRepository
         List<SessionDTO> GetSessions(string lectureId, DateTime from, DateTime to);
         void TakeAttendance(int sessionId);
         List<SessionDTO> GetSessionsOfGroup(int groupId);
-        bool CreateSession(int groupId, DateTime date, int slotId, int roomId);
+        bool CreateSession(int groupId, DateTime date, int slotId, int roomId, string lectureId);
     }
 }

@@ -45,7 +45,7 @@ namespace PRN221_Project1._0.DataAccess.Managers
             sessions = _context.Sessions.Include(s => s.Room).Include(s => s.Slot).Where(s => s.GroupId == groupId).ToList();
             return sessions;
         }
-        public bool CreateSession(int groupId, DateTime date, int slotId, int roomId)
+        public bool CreateSession(int groupId, DateTime date, int slotId, int roomId, string lectureId)
         {
             Session session = new Session();
             session.GroupId = groupId;
@@ -53,7 +53,7 @@ namespace PRN221_Project1._0.DataAccess.Managers
             session.SlotId = slotId;
             session.RoomId = roomId;
             session.IsAttended = false;
-            if (isExisted(date, slotId))
+            if (isExisted(date, slotId, roomId, lectureId))
             {
                 return false;
             }
@@ -64,10 +64,15 @@ namespace PRN221_Project1._0.DataAccess.Managers
                 return true;
             }
         }
-        public bool isExisted(DateTime date, int slotId)
+        public bool isExisted(DateTime date, int slotId, int roomId, string lectureId)
         {
-            List<Session> sessions = _context.Sessions.Where(s => s.SlotId == slotId && s.Date == date)
+            List<Session> sessions = _context.Sessions.Where(s => s.SlotId == slotId && s.Date == date && s.RoomId == roomId)
                                                       .ToList();
+            //List<Session> sessions1 = _context.Sessions
+            //    .Include(s => s.Group)
+            //    .ThenInclude(s => s.Course)
+            //    .Where(s => s.SlotId == slotId && s.Date == date && s.Group.Course.LectureId.Equals(lectureId))
+            //    .ToList();
             if (sessions == null || sessions.Count == 0)
             {
                 return false;

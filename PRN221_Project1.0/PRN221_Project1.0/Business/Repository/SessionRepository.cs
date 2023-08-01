@@ -40,10 +40,10 @@ namespace PRN221_Project1._0.Business.Repository
             manager = new SessionManager(_context);
             manager.TakeAttendance(sessionId);
         }
-        public bool CreateSession(int groupId, DateTime date, int slotId, int roomId)
+        public bool CreateSession(int groupId, DateTime date, int slotId, int roomId, string lectureId)
         {
             manager = new SessionManager(_context);
-            return manager.CreateSession(groupId, date, slotId, roomId);
+            return manager.CreateSession(groupId, date, slotId, roomId, lectureId);
         }
 
 

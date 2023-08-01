@@ -33,13 +33,30 @@ namespace PRN221_Project1._0.Pages
             this.lectureRepository = lectureRepository;
         }
 
-        public void OnGet(string? lectureIdFilter, int? subjectIdFilter, int? termIdFilter, int? campusIdFilter)
+        public IActionResult OnGet(string? lectureIdFilter, int? subjectIdFilter, int? termIdFilter, int? campusIdFilter)
         {
+            string wsadmin = HttpContext.Session.GetString("admin");
+            string json = HttpContext.Session.GetString("lecture");
+            if (wsadmin == null && json == null)
+            {
+                // Redirect the user to the login page
+                return RedirectToPage("/Login");
+            }
+            if (json != null)
+            {
+                return RedirectToPage("/Timetable");
+
+            }
             courses = courseRepository.GetAllCourses(lectureIdFilter, subjectIdFilter, termIdFilter, campusIdFilter);
             lectures = lectureRepository.GetAllLectures();
             subjects = subjectRepository.GetAllSubjects();
             terms = termRepository.GetAllTerms();
             campuses = campusRepository.GetAllCampuses();
+            this.lectureIdFilter = lectureIdFilter;
+            this.subjectIdFilter = subjectIdFilter;
+            this.termIdFilter = termIdFilter;
+            this.campusIdFilter = campusIdFilter;
+            return Page();
         }
         public IActionResult OnPostCreateCourse()
         {

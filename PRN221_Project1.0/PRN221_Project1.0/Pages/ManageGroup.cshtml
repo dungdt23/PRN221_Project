@@ -18,19 +18,36 @@
 }
 <form method="get">
     <p>Lecture</p>
-    <select name="lectureIdFilter">
+    <select name="lectureIdFilter" class="form-control">
         <option value="">None</option>
         @foreach (var item in Model.lectures)
         {
-            <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
+            @if (item.LectureId == Model.lectureIdFilter)
+            {
+                <option value="@item.LectureId" selected>@item.LectureLastName @item.LectureFirstName</option>
+
+            }
+            else
+            {
+                <option value="@item.LectureId">@item.LectureLastName @item.LectureFirstName</option>
+            }
         }
     </select>
     <p>Term</p>
-    <select name="termIdFilter">
+    <select name="termIdFilter" class="form-control">
         <option value="">None</option>
         @foreach (var item in Model.terms)
         {
-            <option value="@item.TermId">@item.TermName </option>
+            @if (item.TermId == Model.termIdFilter)
+            {
+                <option value="@item.TermId" selected>@item.TermName </option>
+
+            }
+            else
+            {
+                <option value="@item.TermId">@item.TermName </option>
+
+            }
         }
     </select>
     <button type="submit" class="btn btn-primary">View</button>
@@ -83,13 +100,17 @@
             <tr>
                 <td>@c.Student.StudentId</td>
                 <td>@c.Student.LastName @c.Student.FirstName</td>
-                <td>
-                    <button type="button" class="btn btn-link btn-sm btn-rounded"
+                @if (Model.isStarted == false)
+                {
+                    <td>
+                        <button type="button" class="btn btn-link btn-sm btn-rounded"
                     onclick="openPopupDelete('@c.StudentId')">
-                        Delete
-                    </button>
-                    <input type="hidden" name="groupId" value="@c.GroupId">
-                </td>
+                            Delete
+                        </button>
+                        <input type="hidden" name="groupId" value="@c.GroupId">
+                    </td>
+                }
+
             </tr>
         }
     </table>
@@ -108,7 +129,7 @@
                     <input type="text" name="groupName" class="w-100" />
                     <br />
                     <p>Course</p>
-                    <select name="courseId">
+                    <select name="courseId" class="form-control">
                         @foreach (var item in Model.courses)
                         {
                             <option value="@item.CourseId">@item.CourseName - @item.Lecture.LectureLastName @item.Lecture.LectureFirstName</option>
@@ -134,9 +155,9 @@
                 </div>
                 <div class="modal-body">
                     <p>Student ID - Student Name</p>
-                    <input type="hidden" value="@Model.groupIdFilter" name="groupIdFilter"/>
-                    <input type="hidden" value="@Model.lectureIdFilter" name="lectureIdFilter"/>
-                    <input type="hidden" value="@Model.termIdFilter" name="termIdFilter"/>
+                    <input type="hidden" value="@Model.groupIdFilter" name="groupIdFilter" />
+                    <input type="hidden" value="@Model.lectureIdFilter" name="lectureIdFilter" />
+                    <input type="hidden" value="@Model.termIdFilter" name="termIdFilter" />
                     <select name="studentId">
                         @foreach (var item in Model.students)
                         {
